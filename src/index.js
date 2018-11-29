@@ -62,10 +62,12 @@ SOS.prototype.sendMessageTextToSegments = function(messageText, segments, cb) {
     }, cb);
 };
 
-SOS.prototype.sendMessageTextWithFilters = function(messageText, filters, cb) {
+SOS.prototype.sendMessageTextWithFilters = function(headingText, messageText, dataObject, filters, cb) {
     if(Array.isArray(filters)) {
         SOS.prototype.sendMessage({
+            headings: headingText,
             contents: {en: messageText},
+            data: dataObject,
             filters: filters
         }, cb);
     } else {
@@ -73,7 +75,6 @@ SOS.prototype.sendMessageTextWithFilters = function(messageText, filters, cb) {
         return;
     }
 };
-
 /* Utils */
 
 SOS.prototype._isSetup = function() {
